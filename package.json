@@ -1,8 +1,8 @@
 {
   "name": "cocktails-api",
   "private": true,
-  "version": "0.0.0",
-  "description": "a Sails application",
+  "version": "0.0.1",
+  "description": "A cocktail API developed with Sails.js",
   "keywords": [],
   "dependencies": {
     "bcrypt": "^0.8.3",
