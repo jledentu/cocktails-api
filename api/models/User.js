@@ -23,6 +23,7 @@ module.exports = {
     salt: {
       type: 'string'
     },
+
     // override default toJSON
     toJSON: function() {
       var obj = this.toObject();
