@@ -21,12 +21,16 @@
   "scripts": {
     "debug": "node debug app.js",
     "start": "node app.js",
+    "lint": "jshint --exclude ./node_modules . && jscs .",
+    "pretest": "npm run lint",
     "test": "mocha test/bootstrap.test.js test/unit/**/*.test.js"
   },
   "main": "app.js",
   "author": "jeremie",
   "license": "MIT",
   "devDependencies": {
+    "jscs": "^2.5.1",
+    "jshint": "^2.8.0",
     "mocha": "^2.3.4",
     "sails-hook-babel": "^5.0.1"
   }

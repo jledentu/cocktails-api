@@ -1,19 +1,21 @@
-var Sails = require('sails'), sails;
+var Sails = require('sails');
 
 before(function(done) {
 
   // Increase the Mocha timeout so that Sails has enough time to lift.
-  this.timeout(5000);
+  this.timeout(10000);
 
   Sails.lift({
-    "hooks": {
-      "grunt": false
+    hooks: {
+      grunt: false
     }
   }, function(err, server) {
-    sails = server;
-    if (err) return done(err);
+    if (err) {
+      return done(err);
+    }
+
     // here you can load fixtures, etc.
-    done(err, sails);
+    done(err, server);
   });
 });
 
