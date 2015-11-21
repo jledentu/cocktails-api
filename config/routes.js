@@ -45,6 +45,10 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-  'POST /auth': 'AuthController.login'
-
+  'POST /auth': 'AuthController.login',
+  'GET /categories/:name': {
+    controller: 'CategoryController',
+    action: 'findOneByName',
+    skipAssets: true
+  }
 };

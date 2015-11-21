@@ -25,7 +25,7 @@ describe('CocktailController', function() {
   });
 
   describe('POST /cocktails', function() {
-    it('should return a 403 error if unauthorized', function (done) {
+    it('should return a 401 error if unauthorized', function (done) {
       request(sails.hooks.http.app)
         .post('/cocktails')
         .send({

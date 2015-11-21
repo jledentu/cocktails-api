@@ -37,9 +37,13 @@ module.exports.policies = {
   },
 
   CocktailController: {
-    '*': false,
     'find': true,
     'create': ['passport', 'isAuthenticated']
+  },
+
+  CategoryController: {
+    'find': true,
+    'findOneByName': true
   }
 
   /***************************************************************************
