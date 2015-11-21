@@ -35,5 +35,9 @@ module.exports.connections = {
   distantDevServer: {
     adapter: 'sails-mongo',
     url: process.env.MONGOLAB_COCKTAILS_DEV_URI
+  },
+
+  test: {
+    adapter: 'sails-disk'
   }
 };

@@ -14,7 +14,7 @@ module.exports = {
       unique: true
     },
     rating: {
-      type: 'int'
+      type: 'integer'
     },
     image: {
       type: 'string'
