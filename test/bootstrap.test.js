@@ -1,4 +1,6 @@
+require('should');
 var Sails = require('sails');
+var Barrels = require('barrels');
 
 before(function(done) {
 
@@ -8,14 +10,25 @@ before(function(done) {
   Sails.lift({
     hooks: {
       grunt: false
+    },
+    models: {
+      connection: 'test',
+      migrate: 'drop'
     }
   }, function(err, server) {
     if (err) {
       return done(err);
     }
 
-    // here you can load fixtures, etc.
-    done(err, server);
+    // Load fixtures
+    var barrels = new Barrels();
+
+    fixtures = barrels.data;
+
+    // Populate the DB
+    barrels.populate(function(err) {
+      done(err, server);
+    });
   });
 });
 
