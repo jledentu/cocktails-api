@@ -1,7 +1,7 @@
 /**
-* Cocktail.js
+* Category.js
 *
-* @description :: TODO: You might write a short summary of how this model works and what it represents here.
+* @description :: This model represents a category of cocktails
 * @docs        :: http://sailsjs.org/#!documentation/models
 */
 
@@ -13,17 +13,12 @@ module.exports = {
       required: true,
       unique: true
     },
-    rating: {
-      type: 'integer'
-    },
-    image: {
-      type: 'string'
-    },
     description: {
       type: 'string'
     },
-    category: {
-      model: 'category'
+    cocktails: {
+      collection: 'cocktail',
+      via: 'category'
     }
   }
 };

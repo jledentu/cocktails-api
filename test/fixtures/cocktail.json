@@ -3,18 +3,21 @@
     "name": "Margarita",
     "rating": 3,
     "image": "image_margaritan.jpg",
-    "description": "Description of the Margarita cocktail"
+    "description": "Description of the Margarita cocktail",
+    "category": 2
   },
   {
     "name": "Cosmopolitan",
     "rating": 4,
     "image": "image_cosmopolitan.jpg",
-    "description": "Description of the Cosmopolitan cocktail"
+    "description": "Description of the Cosmopolitan cocktail",
+    "category": 1
   },
   {
     "name": "Tequila Sunrise",
     "rating": 4,
     "image": "image_tequila_sunrise.jpg",
-    "description": "Description of the Tequila Sunrise cocktail"
+    "description": "Description of the Tequila Sunrise cocktail",
+    "category": 2
   }
 ]

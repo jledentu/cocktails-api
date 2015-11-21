@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Vodka",
+    "id": 1,
+    "description": "Cocktails with vodka"
+  },
+  {
+    "name": "Tequila",
+    "id": 2,
+    "description": "Cocktails with tequila"
+  }
+]
