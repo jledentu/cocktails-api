@@ -1,12 +1,18 @@
 language: node_js
 node_js:
-  - "4.2"
-  - "5"
+- '4.2'
+- '5'
 env:
-  - CXX=g++-4.8
+- CXX=g++-4.8
 addons:
   apt:
     sources:
     - ubuntu-toolchain-r-test
     packages:
     - g++-4.8
+deploy:
+  provider: heroku
+  api_key:
+    secure: WILSUS7Bo4lnDxSNahsYAAdq3djkpvcx2tTxkU3AudT2Fn2Lf8BFx3G/6orgTQI6ATin+0bdkFDDnzCY5J3nmCbDBR2dKWGB9vi0125kuo0IPoadGO2lc6J3CyYvjL263O/Ja404+OiAAp2cRsbLfl/4fKbDVnOuW2iDGXDZQkm52//CpgJURxTyf8jAcR/faD/qJyUstoNUbDrjzTMrk+jFiIdE3+wNyKcp12GxzEA6wva+AcmxLIwIP8zf1FQptDH5hJ1gEigFmQR8G/wsDe6aD3F62/YHu1f5j/SlCg1jdA1viXn+p4KxSWwyzCw2gIxd0FQF3Rt10fR/YaM6riyWcOjxr4OVu4tgzWBA5wK3tK3jx+0ylDa6xet9w1nvsjxJikNygDrxqSvuZSruB2d2Y7sWE37IoP6VtoHOur3UGgVqg6tYcc3O7L7A2sNr2Q8WeBf31c7IRZBu/nLRdtFAtw8zM6sZZ1zh8yh947CPF+aogtj7+6Flyss3xImgBuKUlGpzJdCySIprOgeY9T/GG+p8k+jukZ+5xrP+ukyEebJQYVav7T9Xu6VImqDTgTop5UfkRv0ER9FVjGPtyjPXjDv8nuQh2EfP3Ng/RClLF2rW87WPeipb7mhoPfgHPClrQLhbDNRk0S7mjX5DNdPD27fGFNPBzd6Y0mStQ2A=
+  app:
+    develop: cocktails-api-dev
