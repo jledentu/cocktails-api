@@ -24,6 +24,11 @@ module.exports = {
     },
     category: {
       model: 'category'
+    },
+    ingredients: {
+      collection: 'ingredient',
+      via: 'cocktails',
+      dominant: true
     }
   }
 };

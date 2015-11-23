@@ -25,6 +25,19 @@ describe('CocktailModel', function() {
     });
   });
 
+  describe('#populate()', function() {
+    it('should return a cocktail populated with ingredients', function(done) {
+      Cocktail.findOne({name: 'Cosmopolitan'})
+        .populate('ingredients')
+        .then(function(cocktail) {
+          cocktail.ingredients.length.should.be.eql(3);
+          cocktail.ingredients[0].name = 'cranberry';
+          done();
+        })
+        .catch(done);
+    });
+  });
+
   describe('#create()', function() {
     it('should create a new cocktail', function(done) {
       Cocktail.create({

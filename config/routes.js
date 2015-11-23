@@ -50,5 +50,10 @@ module.exports.routes = {
     controller: 'CategoryController',
     action: 'findOneByName',
     skipAssets: true
+  },
+  'GET /ingredients/:name': {
+    controller: 'IngredientController',
+    action: 'findOneByName',
+    skipAssets: true
   }
 };

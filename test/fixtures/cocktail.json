@@ -11,7 +11,8 @@
     "rating": 4,
     "image": "image_cosmopolitan.jpg",
     "description": "Description of the Cosmopolitan cocktail",
-    "category": 1
+    "category": 1,
+    "ingredients": [1, 2, 3]
   },
   {
     "name": "Tequila Sunrise",

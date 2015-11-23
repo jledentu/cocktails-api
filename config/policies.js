@@ -44,6 +44,11 @@ module.exports.policies = {
   CategoryController: {
     'find': true,
     'findOneByName': true
+  },
+
+  IngredientController: {
+    'find': true,
+    'findOneByName': true
   }
 
   /***************************************************************************
