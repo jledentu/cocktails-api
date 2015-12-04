@@ -16,6 +16,7 @@ describe('CategoryModel', function() {
       Category.findOne({name: 'Vodka'})
         .then(function(category) {
           category.name.should.be.eql('Vodka');
+          category.slug.should.be.eql('Vodka');
           category.description.should.be.eql('Cocktails with vodka');
           category.cocktails.length.should.be.eql(0);
           done();
@@ -31,6 +32,7 @@ describe('CategoryModel', function() {
         description: 'Test description'
       }).then(function(category) {
           category.name.should.be.eql('Test category');
+          category.slug.should.be.eql('Test-category');
           category.description.should.be.eql('Test description');
           done();
         })
@@ -40,7 +42,7 @@ describe('CategoryModel', function() {
 
   describe('#destroy()', function() {
     it('should destroy a category object', function(done) {
-      Cocktail.destroy({name: 'Test category'})
+      Category.destroy({name: 'Test category'})
         .then(function() {
           done();
         })
@@ -54,6 +56,7 @@ describe('CategoryModel', function() {
         .populate('cocktails')
         .then(function(category) {
           category.name.should.be.eql('Vodka');
+          category.slug.should.be.eql('Vodka');
           category.description.should.be.eql('Cocktails with vodka');
           category.cocktails.length.should.be.eql(1);
           category.cocktails[0].name.should.be.eql('Cosmopolitan');

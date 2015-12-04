@@ -13,9 +13,9 @@ module.exports = {
       required: true,
       unique: true
     },
-    fullname: {
-      type: 'string',
-      required: true
+    slug: {
+      type: 'slug',
+      from: 'name'
     },
     description: {
       type: 'string'

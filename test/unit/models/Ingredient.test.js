@@ -13,10 +13,10 @@ describe('IngredientModel', function() {
 
   describe('#findOne()', function() {
     it('should return a ingredient', function(done) {
-      Ingredient.findOne({name: 'lime'})
+      Ingredient.findOne({name: 'Lime'})
         .then(function(ingredient) {
-          ingredient.name.should.be.eql('lime');
-          ingredient.fullname.should.be.eql('Lime');
+          ingredient.slug.should.be.eql('Lime');
+          ingredient.name.should.be.eql('Lime');
           ingredient.description.should.be.eql('Lime is a fruit');
           ingredient.cocktails.length.should.be.eql(0);
           done();
@@ -28,12 +28,11 @@ describe('IngredientModel', function() {
   describe('#create()', function() {
     it('should create a new ingredient', function(done) {
       Ingredient.create({
-        name: 'test-ingredient',
-        fullname: 'Test ingredient',
+        name: 'Test ingredient',
         description: 'Test description'
       }).then(function(ingredient) {
-          ingredient.name.should.be.eql('test-ingredient');
-          ingredient.fullname.should.be.eql('Test ingredient');
+          ingredient.slug.should.be.eql('Test-ingredient');
+          ingredient.name.should.be.eql('Test ingredient');
           ingredient.description.should.be.eql('Test description');
           done();
         })
@@ -43,7 +42,7 @@ describe('IngredientModel', function() {
 
   describe('#destroy()', function() {
     it('should destroy a ingredient object', function(done) {
-      Ingredient.destroy({name: 'test-ingredient'})
+      Ingredient.destroy({slug: 'Test-ingredient'})
         .then(function() {
           done();
         })

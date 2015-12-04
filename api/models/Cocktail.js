@@ -13,6 +13,10 @@ module.exports = {
       required: true,
       unique: true
     },
+    slug: {
+      type: 'slug',
+      from: 'name'
+    },
     rating: {
       type: 'integer'
     },

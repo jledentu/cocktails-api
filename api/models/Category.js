@@ -19,6 +19,10 @@ module.exports = {
     cocktails: {
       collection: 'cocktail',
       via: 'category'
+    },
+    slug: {
+      type: 'slug',
+      from: 'name'
     }
   }
 };

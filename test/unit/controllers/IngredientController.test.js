@@ -28,7 +28,7 @@ describe('IngredientController', function() {
           if (err) {
             return done(err);
           }
-          res.body.name.should.be.eql('lime');
+          res.body.name.should.be.eql('Lime');
           done();
         });
     });
