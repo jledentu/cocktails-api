@@ -41,25 +41,25 @@ describe('IngredientController', function() {
   });
 
   describe('POST /ingredients', function() {
-    it('should return a 403 error', function (done) {
+    it('should return a 401 error', function (done) {
       request(sails.hooks.http.app)
         .post('/ingredients')
         .send({
           name: 'Ingredient test',
           description: 'test'
         })
-        .expect(403, done);
+        .expect(401, done);
     });
   });
 
   describe('DELETE /ingredients', function() {
-    it('should return a 403 error', function (done) {
+    it('should return a 401 error', function (done) {
       request(sails.hooks.http.app)
         .delete('/ingredients')
         .send({
           id: 1
         })
-        .expect(403, done);
+        .expect(401, done);
     });
   });
 });

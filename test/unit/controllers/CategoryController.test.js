@@ -52,14 +52,14 @@ describe('CategoryController', function() {
   });
 
   describe('POST /categories', function() {
-    it('should return a 403 error', function (done) {
+    it('should return a 401 error', function (done) {
       request(sails.hooks.http.app)
         .post('/categories')
         .send({
           name: 'Category test',
           description: 'test'
         })
-        .expect(403, done);
+        .expect(401, done);
     });
   });
 });
