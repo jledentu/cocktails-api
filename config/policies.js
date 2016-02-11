@@ -38,17 +38,25 @@ module.exports.policies = {
 
   CocktailController: {
     'find': true,
-    'create': ['passport', 'isAuthenticated']
+    'create': ['passport', 'isAuthenticated'],
+    'update': ['passport', 'isAuthenticated'],
+    'destroy': ['passport', 'isAuthenticated']
   },
 
   CategoryController: {
     'find': true,
-    'findOneByName': true
+    'findOneByName': true,
+    'create': ['passport', 'isAuthenticated'],
+    'update': ['passport', 'isAuthenticated'],
+    'destroy': ['passport', 'isAuthenticated']
   },
 
   IngredientController: {
     'find': true,
-    'findOneByName': true
+    'findOneByName': true,
+    'create': ['passport', 'isAuthenticated'],
+    'update': ['passport', 'isAuthenticated'],
+    'destroy': ['passport', 'isAuthenticated']
   }
 
   /***************************************************************************
