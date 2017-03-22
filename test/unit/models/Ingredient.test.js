@@ -15,7 +15,7 @@ describe('IngredientModel', function() {
     it('should return a ingredient', function(done) {
       Ingredient.findOne({name: 'Lime'})
         .then(function(ingredient) {
-          ingredient.slug.should.be.eql('Lime');
+          ingredient.slug.should.be.eql('lime');
           ingredient.name.should.be.eql('Lime');
           ingredient.description.should.be.eql('Lime is a fruit');
           ingredient.cocktails.length.should.be.eql(0);
@@ -31,7 +31,7 @@ describe('IngredientModel', function() {
         name: 'Test ingredient',
         description: 'Test description'
       }).then(function(ingredient) {
-          ingredient.slug.should.be.eql('Test-ingredient');
+          ingredient.slug.should.be.eql('test-ingredient');
           ingredient.name.should.be.eql('Test ingredient');
           ingredient.description.should.be.eql('Test description');
           done();
@@ -42,7 +42,7 @@ describe('IngredientModel', function() {
 
   describe('#destroy()', function() {
     it('should destroy a ingredient object', function(done) {
-      Ingredient.destroy({slug: 'Test-ingredient'})
+      Ingredient.destroy({slug: 'test-ingredient'})
         .then(function() {
           done();
         })
