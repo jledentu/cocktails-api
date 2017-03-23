@@ -4,6 +4,9 @@ node_js:
 - '7'
 env:
 - CXX=g++-4.8
+before_install:
+  - wget http://unicode.org/Public/UNIDATA/UnicodeData.txt -O /tmp/UnicodeData.txt
+  - export NODE_UNICODETABLE_UNICODEDATA_TXT=/tmp/UnicodeData.txt
 addons:
   apt:
     sources:
