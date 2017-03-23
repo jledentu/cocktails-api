@@ -13,6 +13,10 @@ module.exports = {
       required: true,
       unique: true
     },
+    slug: {
+      type: 'slug',
+      from: 'name'
+    },
     rating: {
       type: 'integer'
     },
@@ -21,6 +25,14 @@ module.exports = {
     },
     description: {
       type: 'string'
+    },
+    category: {
+      model: 'category'
+    },
+    ingredients: {
+      collection: 'ingredient',
+      via: 'cocktails',
+      dominant: true
     }
   }
 };

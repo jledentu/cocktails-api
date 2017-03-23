@@ -12,10 +12,18 @@ GET /cocktails
 
 Returns all cocktails data.
 
-## categories
+## Categories
 
 ```
 GET /categories
 ```
 
 Returns all categories data.
+
+## Ingredients
+
+```
+GET /ingredients
+```
+
+Returns all ingredients data.

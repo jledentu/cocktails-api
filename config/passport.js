@@ -2,6 +2,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var LocalAPIKeyStrategy = require('passport-localapikey').Strategy;
 var JwtStrategy = require('passport-jwt').Strategy;
+var ExtractJwt = require('passport-jwt').ExtractJwt;
 var bcrypt = require('bcrypt');
 
 passport.use(new LocalStrategy(
@@ -37,6 +38,7 @@ var JWT_ISSUER = 'cocktails-api';
 var JWT_AUDIENCE = 'cocktails-api';
 passport.use(new JwtStrategy({
   secretOrKey: JWT_SECRET_KEY,
+	jwtFromRequest: ExtractJwt.fromAuthHeader(),
   issuer: JWT_ISSUER,
   audience: JWT_AUDIENCE
 }, function(payload, done) {

@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Cranberry juice",
+    "fullname": "Cranberry juice",
+    "description": "Juice of cranberries"
+  },
+  {
+    "name": "Vodka",
+    "description": "An alcohol"
+  },
+  {
+    "name": "Lime",
+    "description": "Lime is a fruit"
+  }
+]

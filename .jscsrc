@@ -1,5 +1,4 @@
 {
-  "esnext": true,
   "requireTrailingComma": false,
   "disallowTrailingWhitespace": true,
   "disallowMultipleSpaces": true,
