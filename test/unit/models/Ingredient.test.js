@@ -2,9 +2,15 @@ const fixture = require('../../fixtures/ingredient.json');
 
 describe('IngredientModel', () => {
 
+  let Ingredient;
+
+  before(() => {
+    Ingredient = sails.models.ingredient;
+  });
+
   describe('#find()', () => {
     it('should return all ingredients', (done) => {
-      sails.models.ingredient.find()
+      Ingredient.find()
         .then(function(ingredients) {
           ingredients.length.should.be.eql(fixture.length);
           done();
@@ -15,7 +21,7 @@ describe('IngredientModel', () => {
 
   describe('#findOne()', () => {
     it('should return a ingredient', (done) => {
-      sails.models.ingredient.findOne({name: 'Lime'})
+      Ingredient.findOne({name: 'Lime'})
         .then(function(ingredient) {
           ingredient.slug.should.be.eql('lime');
           ingredient.name.should.be.eql('Lime');
@@ -29,7 +35,7 @@ describe('IngredientModel', () => {
 
   describe('#create()', () => {
     it('should create a new ingredient', (done) => {
-      sails.models.ingredient.create({
+      Ingredient.create({
         name: 'Test ingredient',
         description: 'Test description'
       }).then(function(ingredient) {
@@ -44,7 +50,7 @@ describe('IngredientModel', () => {
 
   describe('#destroy()', () => {
     it('should destroy a ingredient object', (done) => {
-      sails.models.ingredient.destroy({slug: 'test-ingredient'})
+      Ingredient.destroy({slug: 'test-ingredient'})
         .then(() => {
           done();
         })

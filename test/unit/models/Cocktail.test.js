@@ -1,10 +1,16 @@
 const fixture = require('../../fixtures/cocktail.json');
 
-describe('CocktailModel', function() {
+describe('CocktailModel', () =>  {
 
-  describe('#find()', function() {
-    it('should return all cocktails', function(done) {
-      sails.models.cocktail.find()
+  let Cocktail;
+
+  before(() => {
+    Cocktail = sails.models.cocktail;
+  });
+
+  describe('#find()', () => {
+    it('should return all cocktails', (done) =>  {
+      Cocktail.find()
         .then(function(cocktails) {
           cocktails.length.should.be.eql(fixture.length);
           done();
@@ -13,9 +19,9 @@ describe('CocktailModel', function() {
     });
   });
 
-  describe('#findOne()', function() {
-    it('should return a cocktail', function(done) {
-      sails.models.cocktail.findOne({name: 'Margarita'})
+  describe('#findOne()', () =>  {
+    it('should return a cocktail', (done) =>  {
+      Cocktail.findOne({name: 'Margarita'})
         .then(function(cocktail) {
           cocktail.name.should.be.eql('Margarita');
           cocktail.slug.should.be.eql('margarita');
@@ -28,9 +34,9 @@ describe('CocktailModel', function() {
     });
   });
 
-  describe('#populate()', function() {
-    it('should return a cocktail populated with ingredients', function(done) {
-      sails.models.cocktail.findOne({name: 'Cosmopolitan'})
+  describe('#populate()', () =>  {
+    it('should return a cocktail populated with ingredients', (done) =>  {
+      Cocktail.findOne({name: 'Cosmopolitan'})
         .populate('ingredients')
         .then(function(cocktail) {
           cocktail.ingredients.length.should.be.eql(3);
@@ -41,9 +47,9 @@ describe('CocktailModel', function() {
     });
   });
 
-  describe('#create()', function() {
-    it('should create a new cocktail', function(done) {
-      sails.models.cocktail.create({
+  describe('#create()', () =>  {
+    it('should create a new cocktail', (done) =>  {
+      Cocktail.create({
         name: 'Test cocktail',
         description: 'Test description',
         rating: 1,
@@ -60,10 +66,10 @@ describe('CocktailModel', function() {
     });
   });
 
-  describe('#destroy()', function() {
-    it('should destroy a cocktail object', function(done) {
-      sails.models.cocktail.destroy({name: 'Test cocktail'})
-        .then(function() {
+  describe('#destroy()', () =>  {
+    it('should destroy a cocktail object', (done) =>  {
+      Cocktail.destroy({name: 'Test cocktail'})
+        .then(() =>  {
           done();
         })
         .catch(done);

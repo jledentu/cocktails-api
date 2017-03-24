@@ -2,9 +2,15 @@ const fixture = require('../../fixtures/category.json');
 
 describe('CategoryModel', () => {
 
+  let Category;
+
+  before(() => {
+    Category = sails.models.category;
+  });
+
   describe('#find()', () => {
     it('should return all categories', (done) => {
-      sails.models.category.find()
+      Category.find()
         .then(function(categories) {
           categories.length.should.be.eql(fixture.length);
           done();
@@ -15,7 +21,7 @@ describe('CategoryModel', () => {
 
   describe('#findOne()', () => {
     it('should return a category', (done) => {
-      sails.models.category.findOne({name: 'Vodka'})
+      Category.findOne({name: 'Vodka'})
         .then(function(category) {
           category.name.should.be.eql('Vodka');
           category.slug.should.be.eql('vodka');
@@ -29,7 +35,7 @@ describe('CategoryModel', () => {
 
   describe('#create()', () => {
     it('should create a new category', (done) => {
-      sails.models.category.create({
+      Category.create({
         name: 'Test category',
         description: 'Test description'
       }).then(function(category) {
@@ -44,7 +50,7 @@ describe('CategoryModel', () => {
 
   describe('#destroy()', () => {
     it('should destroy a category object', (done) => {
-      sails.models.category.destroy({name: 'Test category'})
+      Category.destroy({name: 'Test category'})
         .then(() => {
           done();
         })
@@ -54,7 +60,7 @@ describe('CategoryModel', () => {
 
   describe('#populate()', () => {
     it('should populate cocktails', (done) => {
-      sails.models.category.findOne({name: 'Vodka'})
+      Category.findOne({name: 'Vodka'})
         .populate('cocktails')
         .then((category) => {
           category.name.should.be.eql('Vodka');
