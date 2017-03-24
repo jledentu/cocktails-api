@@ -1,5 +1,5 @@
-var passport = require('passport');
-var jwt = require('jsonwebtoken');
+const passport = require('passport');
+const jwt = require('jsonwebtoken');
 
 /**
  * AuthController
@@ -10,18 +10,18 @@ var jwt = require('jsonwebtoken');
 
 module.exports = {
 
-	login: function (req, res) {
-		passport.authenticate('local', function(err, user, info) {
-			if ((err) || (!user)) {
-				return res.forbidden();
-			}
+  login: function (req, res) {
+    passport.authenticate('local', (err, user) => {
+      if ((err) || (!user)) {
+        return res.forbidden();
+      }
 
-			return res.json({
-				token: jwt.sign(user.toJSON(), sails.config.jwtSettings.secret, {
-	        issuer: sails.config.jwtSettings.issuer,
-	        audience: sails.config.jwtSettings.audience
-	      })
-			});
-		})(req, res);
+      return res.json({
+        token: jwt.sign(user.toJSON(), sails.config.jwtSettings.secret, {
+          issuer: sails.config.jwtSettings.issuer,
+          audience: sails.config.jwtSettings.audience
+        })
+      });
+    })(req, res);
   }
 };

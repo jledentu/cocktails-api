@@ -31,11 +31,11 @@ describe('CategoryModel', function() {
         name: 'Test category',
         description: 'Test description'
       }).then(function(category) {
-          category.name.should.be.eql('Test category');
-          category.slug.should.be.eql('test-category');
-          category.description.should.be.eql('Test description');
-          done();
-        })
+        category.name.should.be.eql('Test category');
+        category.slug.should.be.eql('test-category');
+        category.description.should.be.eql('Test description');
+        done();
+      })
         .catch(done);
     });
   });
@@ -51,10 +51,10 @@ describe('CategoryModel', function() {
   });
 
   describe('#populate()', function() {
-    it('should populate cocktails', function(done) {
+    it('should populate cocktails', (done) => {
       Category.findOne({name: 'Vodka'})
         .populate('cocktails')
-        .then(function(category) {
+        .then((category) => {
           category.name.should.be.eql('Vodka');
           category.slug.should.be.eql('vodka');
           category.description.should.be.eql('Cocktails with vodka');

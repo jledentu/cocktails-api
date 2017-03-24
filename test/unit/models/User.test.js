@@ -1,4 +1,5 @@
-var bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
+const User = require('../../api/models/user');
 
 describe('UserModel', function() {
 

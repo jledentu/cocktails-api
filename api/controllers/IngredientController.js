@@ -1,3 +1,5 @@
+const Ingredient = sails.models.Ingredient;
+
 /**
  * IngredientController
  *

@@ -1,8 +1,8 @@
 require('should');
-var Sails = require('sails');
-var Barrels = require('barrels');
+const Sails = require('sails');
+const Barrels = require('barrels');
 
-before(function(done) {
+before((done) => {
 
   // Increase the Mocha timeout so that Sails has enough time to lift.
   this.timeout(10000);
@@ -15,15 +15,13 @@ before(function(done) {
       connection: 'test',
       migrate: 'drop'
     }
-  }, function(err, server) {
+  }, (err, server) => {
     if (err) {
       return done(err);
     }
 
     // Load fixtures
-    var barrels = new Barrels();
-
-    fixtures = barrels.data;
+    let barrels = new Barrels();
 
     // Populate the DB
     barrels.populate(function(err) {

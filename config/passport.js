@@ -1,17 +1,18 @@
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var LocalAPIKeyStrategy = require('passport-localapikey').Strategy;
-var JwtStrategy = require('passport-jwt').Strategy;
-var ExtractJwt = require('passport-jwt').ExtractJwt;
-var bcrypt = require('bcrypt');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+const bcrypt = require('bcrypt');
+
+const User = sails.models.User;
 
 passport.use(new LocalStrategy(
-  function(email, password, done) {
-    User.findOne({ email: email }, function (err, user) {
+  (email, password, done) => {
+    User.findOne({ email: email }, (err, user) => {
       if (err) { return done(err); }
       if (!user) { return done(null, false); }
 
-      bcrypt.compare(password, user.password, function(err, res) {
+      bcrypt.compare(password, user.password, (err, res) => {
         if (res) {
           return done(null, user);
         }
@@ -32,13 +33,12 @@ passport.use(new LocalStrategy(
   }
 ));*/
 
-var opts = {};
-var JWT_SECRET_KEY = process.env.COCKTAILS_JWT_SECRET;
-var JWT_ISSUER = 'cocktails-api';
-var JWT_AUDIENCE = 'cocktails-api';
+let JWT_SECRET_KEY = process.env.COCKTAILS_JWT_SECRET;
+let JWT_ISSUER = 'cocktails-api';
+let JWT_AUDIENCE = 'cocktails-api';
 passport.use(new JwtStrategy({
   secretOrKey: JWT_SECRET_KEY,
-	jwtFromRequest: ExtractJwt.fromAuthHeader(),
+  jwtFromRequest: ExtractJwt.fromAuthHeader(),
   issuer: JWT_ISSUER,
   audience: JWT_AUDIENCE
 }, function(payload, done) {

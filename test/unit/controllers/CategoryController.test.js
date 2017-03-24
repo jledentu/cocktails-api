@@ -36,7 +36,7 @@ describe('CategoryController', function() {
       request(sails.hooks.http.app)
         .get('/categories/vodka')
         .expect(200)
-        .end(function(err, res) {
+        .end((err, res) => {
           if (err) {
             return done(err);
           }
