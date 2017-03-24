@@ -1,20 +1,37 @@
 const bcrypt = require('bcrypt');
-const User = require('../../api/models/user');
 
-describe('UserModel', function() {
+describe('UserModel', () => {
 
   const EMAIL = 'myemail@cocktails.test';
   const PASSWORD = 'mypassword';
 
-  describe('#create()', function() {
-    it('should create a new user', function(done) {
-      User.create({
+  describe('#create()', () => {
+    it('should create a new user', (done) => {
+      sails.models.user.create({
         email: EMAIL,
         password: PASSWORD
-      }).then(function(user) {
-          user.email.should.be.eql(EMAIL);
+      }).then((user) => {
+        user.email.should.be.eql(EMAIL);
 
-          bcrypt.hash(PASSWORD, user.salt, function(err, hash) {
+        bcrypt.hash(PASSWORD, user.salt, (err, hash) => {
+          if (err) {
+            done();
+          } else {
+            user.password.should.be.eql(hash);
+            done();
+          }
+        });
+      })
+        .catch(done);
+    });
+  });
+
+  describe('#findOne()', () => {
+    it('should return a user', (done) => {
+      sails.models.user.findOne({email: EMAIL})
+        .then((user) => {
+          user.email.should.be.eql(EMAIL);
+          bcrypt.hash(PASSWORD, user.salt, (err, hash) => {
             if (err) {
               done();
             } else {
@@ -27,27 +44,9 @@ describe('UserModel', function() {
     });
   });
 
-  describe('#findOne()', function() {
-    it('should return a user', function(done) {
-      User.findOne({email: EMAIL})
-        .then(function(user) {
-          user.email.should.be.eql(EMAIL);
-          bcrypt.hash(PASSWORD, user.salt, function(err, hash) {
-            if (err) {
-              done();
-            } else {
-              user.password.should.be.eql(hash);
-              done();
-            }
-          });
-        })
-        .catch(done);
-    });
-  });
-
-  describe('#destroy()', function() {
-    it('should destroy a user object', function(done) {
-      User.destroy({email: EMAIL})
+  describe('#destroy()', () => {
+    it('should destroy a user object', (done) => {
+      sails.models.user.destroy({email: EMAIL})
         .then(function() {
           done();
         })

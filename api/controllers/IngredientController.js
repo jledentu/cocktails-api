@@ -1,5 +1,3 @@
-const Ingredient = sails.models.Ingredient;
-
 /**
  * IngredientController
  *
@@ -9,7 +7,7 @@ const Ingredient = sails.models.Ingredient;
 
 module.exports = {
   findOneByName: function (req, res) {
-    Ingredient.findOne({name: req.params.name})
+    sails.models.ingredient.findOne({name: req.params.name})
       .then(function(ingredient, err) {
         if (err) {
           return res.serverError(err);

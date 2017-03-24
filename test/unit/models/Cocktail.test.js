@@ -1,10 +1,12 @@
+const fixture = require('../../fixtures/cocktail.json');
+
 describe('CocktailModel', function() {
 
   describe('#find()', function() {
     it('should return all cocktails', function(done) {
-      Cocktail.find()
+      sails.models.cocktail.find()
         .then(function(cocktails) {
-          cocktails.length.should.be.eql(fixtures.cocktail.length);
+          cocktails.length.should.be.eql(fixture.length);
           done();
         })
         .catch(done);
@@ -13,7 +15,7 @@ describe('CocktailModel', function() {
 
   describe('#findOne()', function() {
     it('should return a cocktail', function(done) {
-      Cocktail.findOne({name: 'Margarita'})
+      sails.models.cocktail.findOne({name: 'Margarita'})
         .then(function(cocktail) {
           cocktail.name.should.be.eql('Margarita');
           cocktail.slug.should.be.eql('margarita');
@@ -28,7 +30,7 @@ describe('CocktailModel', function() {
 
   describe('#populate()', function() {
     it('should return a cocktail populated with ingredients', function(done) {
-      Cocktail.findOne({name: 'Cosmopolitan'})
+      sails.models.cocktail.findOne({name: 'Cosmopolitan'})
         .populate('ingredients')
         .then(function(cocktail) {
           cocktail.ingredients.length.should.be.eql(3);
@@ -41,26 +43,26 @@ describe('CocktailModel', function() {
 
   describe('#create()', function() {
     it('should create a new cocktail', function(done) {
-      Cocktail.create({
+      sails.models.cocktail.create({
         name: 'Test cocktail',
         description: 'Test description',
         rating: 1,
         image: 'test_image'
       }).then(function(cocktail) {
-          cocktail.name.should.be.eql('Test cocktail');
-          cocktail.slug.should.be.eql('test-cocktail');
-          cocktail.image.should.be.eql('test_image');
-          cocktail.description.should.be.eql('Test description');
-          cocktail.rating.should.be.eql(1);
-          done();
-        })
-        .catch(done);
+        cocktail.name.should.be.eql('Test cocktail');
+        cocktail.slug.should.be.eql('test-cocktail');
+        cocktail.image.should.be.eql('test_image');
+        cocktail.description.should.be.eql('Test description');
+        cocktail.rating.should.be.eql(1);
+        done();
+      })
+      .catch(done);
     });
   });
 
   describe('#destroy()', function() {
     it('should destroy a cocktail object', function(done) {
-      Cocktail.destroy({name: 'Test cocktail'})
+      sails.models.cocktail.destroy({name: 'Test cocktail'})
         .then(function() {
           done();
         })

@@ -2,7 +2,7 @@ require('should');
 const Sails = require('sails');
 const Barrels = require('barrels');
 
-before((done) => {
+before(function (done) {
 
   // Increase the Mocha timeout so that Sails has enough time to lift.
   this.timeout(10000);

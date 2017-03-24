@@ -1,19 +1,21 @@
-describe('CategoryModel', function() {
+const fixture = require('../../fixtures/category.json');
 
-  describe('#find()', function() {
-    it('should return all categories', function(done) {
-      Category.find()
+describe('CategoryModel', () => {
+
+  describe('#find()', () => {
+    it('should return all categories', (done) => {
+      sails.models.category.find()
         .then(function(categories) {
-          categories.length.should.be.eql(fixtures.category.length);
+          categories.length.should.be.eql(fixture.length);
           done();
         })
         .catch(done);
     });
   });
 
-  describe('#findOne()', function() {
-    it('should return a category', function(done) {
-      Category.findOne({name: 'Vodka'})
+  describe('#findOne()', () => {
+    it('should return a category', (done) => {
+      sails.models.category.findOne({name: 'Vodka'})
         .then(function(category) {
           category.name.should.be.eql('Vodka');
           category.slug.should.be.eql('vodka');
@@ -25,9 +27,9 @@ describe('CategoryModel', function() {
     });
   });
 
-  describe('#create()', function() {
-    it('should create a new category', function(done) {
-      Category.create({
+  describe('#create()', () => {
+    it('should create a new category', (done) => {
+      sails.models.category.create({
         name: 'Test category',
         description: 'Test description'
       }).then(function(category) {
@@ -40,19 +42,19 @@ describe('CategoryModel', function() {
     });
   });
 
-  describe('#destroy()', function() {
-    it('should destroy a category object', function(done) {
-      Category.destroy({name: 'Test category'})
-        .then(function() {
+  describe('#destroy()', () => {
+    it('should destroy a category object', (done) => {
+      sails.models.category.destroy({name: 'Test category'})
+        .then(() => {
           done();
         })
         .catch(done);
     });
   });
 
-  describe('#populate()', function() {
+  describe('#populate()', () => {
     it('should populate cocktails', (done) => {
-      Category.findOne({name: 'Vodka'})
+      sails.models.category.findOne({name: 'Vodka'})
         .populate('cocktails')
         .then((category) => {
           category.name.should.be.eql('Vodka');

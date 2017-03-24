@@ -1,19 +1,21 @@
-describe('IngredientModel', function() {
+const fixture = require('../../fixtures/ingredient.json');
 
-  describe('#find()', function() {
-    it('should return all ingredients', function(done) {
-      Ingredient.find()
+describe('IngredientModel', () => {
+
+  describe('#find()', () => {
+    it('should return all ingredients', (done) => {
+      sails.models.ingredient.find()
         .then(function(ingredients) {
-          ingredients.length.should.be.eql(fixtures.ingredient.length);
+          ingredients.length.should.be.eql(fixture.length);
           done();
         })
         .catch(done);
     });
   });
 
-  describe('#findOne()', function() {
-    it('should return a ingredient', function(done) {
-      Ingredient.findOne({name: 'Lime'})
+  describe('#findOne()', () => {
+    it('should return a ingredient', (done) => {
+      sails.models.ingredient.findOne({name: 'Lime'})
         .then(function(ingredient) {
           ingredient.slug.should.be.eql('lime');
           ingredient.name.should.be.eql('Lime');
@@ -25,25 +27,25 @@ describe('IngredientModel', function() {
     });
   });
 
-  describe('#create()', function() {
-    it('should create a new ingredient', function(done) {
-      Ingredient.create({
+  describe('#create()', () => {
+    it('should create a new ingredient', (done) => {
+      sails.models.ingredient.create({
         name: 'Test ingredient',
         description: 'Test description'
       }).then(function(ingredient) {
-          ingredient.slug.should.be.eql('test-ingredient');
-          ingredient.name.should.be.eql('Test ingredient');
-          ingredient.description.should.be.eql('Test description');
-          done();
-        })
+        ingredient.slug.should.be.eql('test-ingredient');
+        ingredient.name.should.be.eql('Test ingredient');
+        ingredient.description.should.be.eql('Test description');
+        done();
+      })
         .catch(done);
     });
   });
 
-  describe('#destroy()', function() {
-    it('should destroy a ingredient object', function(done) {
-      Ingredient.destroy({slug: 'test-ingredient'})
-        .then(function() {
+  describe('#destroy()', () => {
+    it('should destroy a ingredient object', (done) => {
+      sails.models.ingredient.destroy({slug: 'test-ingredient'})
+        .then(() => {
           done();
         })
         .catch(done);

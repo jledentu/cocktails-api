@@ -1,14 +1,12 @@
-const Category = sails.models.Category;
-
 /**
  * CategoryController
  *
  * @description :: Server-side logic for managing categories
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-class CategoryController {
-  static findOneByName (req, res) {
-    Category.findOne({name: req.params.name})
+module.exports = {
+  findOneByName: function (req, res) {
+    sails.models.category.findOne({name: req.params.name})
       .then(function(category, err) {
         if (err) {
           return res.serverError(err);
@@ -21,6 +19,4 @@ class CategoryController {
         }
       });
   }
-}
-
-module.exports = CategoryController;
+};

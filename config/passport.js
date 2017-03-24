@@ -4,11 +4,9 @@ const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const bcrypt = require('bcrypt');
 
-const User = sails.models.User;
-
 passport.use(new LocalStrategy(
   (email, password, done) => {
-    User.findOne({ email: email }, (err, user) => {
+    sails.models.User.findOne({ email: email }, (err, user) => {
       if (err) { return done(err); }
       if (!user) { return done(null, false); }
 
@@ -33,7 +31,7 @@ passport.use(new LocalStrategy(
   }
 ));*/
 
-let JWT_SECRET_KEY = process.env.COCKTAILS_JWT_SECRET;
+let JWT_SECRET_KEY = process.env.COCKTAILS_JWT_SECRET || 'test';
 let JWT_ISSUER = 'cocktails-api';
 let JWT_AUDIENCE = 'cocktails-api';
 passport.use(new JwtStrategy({
@@ -41,8 +39,8 @@ passport.use(new JwtStrategy({
   jwtFromRequest: ExtractJwt.fromAuthHeader(),
   issuer: JWT_ISSUER,
   audience: JWT_AUDIENCE
-}, function(payload, done) {
-  User.findOne({id: payload.id}, function(err, user) {
+}, (payload, done) => {
+  sails.models.User.findOne({id: payload.id}, (err, user) => {
     if (err) {
       return done(err, false);
     }
