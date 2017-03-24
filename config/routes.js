@@ -55,5 +55,10 @@ module.exports.routes = {
     controller: 'IngredientController',
     action: 'findOneByName',
     skipAssets: true
+  },
+  'GET /cocktails/search': {
+    controller: 'CocktailController',
+    action: 'search',
+    skipAssets: true
   }
 };
