@@ -1,5 +1,5 @@
 const request = require('supertest');
-const fixture = require('../../fixtures/cocktail.json');
+const fixture = require('../../fixtures/ingredient.json');
 
 describe('IngredientController', () => {
 

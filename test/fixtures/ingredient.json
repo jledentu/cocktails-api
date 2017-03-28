@@ -11,5 +11,13 @@
   {
     "name": "Lime",
     "description": "Lime is a fruit"
+  },
+  {
+    "name": "Tequila",
+    "description": "An alcohol"
+  },
+  {
+    "name": "Rhum",
+    "description": "An alcohol"
   }
 ]
