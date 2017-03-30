@@ -30,9 +30,7 @@ module.exports = {
       model: 'category'
     },
     ingredients: {
-      collection: 'ingredient',
-      via: 'cocktails',
-      dominant: true
+      type: 'array'
     }
   }
 };
